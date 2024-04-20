@@ -16,6 +16,7 @@ def display_excel_file(df):
 # Main function
 def main():
     st.title('وبگاه بررسی فروش قطارهای ریل سیر کوثر')
+    st.image('Picture4.jpg')
 
     # Sidebar: Browse Excel File
     st.sidebar.header('فایل اکسل را جستجو کنید')
