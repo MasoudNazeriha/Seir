@@ -1,0 +1,212 @@
+:root {
+  --bg: #0f172a;
+  --card: rgba(30, 41, 59, 0.72);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --border: rgba(148, 163, 184, 0.25);
+  --quran-font: "Amiri", serif;
+  --translation-font: "Vazirmatn", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Vazirmatn", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 10% 10%, #1e293b 0%, var(--bg) 45%, #020617 100%);
+}
+
+.background-glow {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 75% 20%, rgba(56, 189, 248, 0.25), transparent 30%),
+    radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.18), transparent 25%);
+  filter: blur(8px);
+  animation: drift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 92vw);
+  margin: 2rem auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.topbar,
+.controls,
+.status,
+.ayah-card {
+  backdrop-filter: blur(12px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+.topbar {
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+h1 {
+  margin: 0 0 0.4rem;
+}
+
+.topbar p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.font-controls {
+  display: grid;
+  gap: 0.6rem;
+}
+
+label {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+select {
+  width: 100%;
+  margin-top: 0.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.8);
+  color: var(--text);
+  padding: 0.5rem 0.65rem;
+}
+
+.controls,
+.status {
+  padding: 0.9rem 1rem;
+}
+
+.ayah-container {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.ayah-card {
+  padding: 1rem 1.1rem;
+  animation: fadeIn 0.35s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ayah-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.2);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.ayah-arabic {
+  font-family: var(--quran-font);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  line-height: 2.2;
+  margin: 0.9rem 0 0.3rem;
+}
+
+.ayah-word {
+  cursor: help;
+  transition: color 0.2s;
+}
+
+.ayah-word:hover {
+  color: var(--accent);
+}
+
+.ayah-translation {
+  font-family: var(--translation-font);
+  color: #cbd5e1;
+  margin-top: 0;
+}
+
+.hadith-block h3 {
+  margin: 0.4rem 0 0.6rem;
+  font-size: 1rem;
+  color: #bae6fd;
+}
+
+.hadith-scroll {
+  max-height: 160px;
+  overflow: auto;
+  display: grid;
+  gap: 0.55rem;
+  padding-left: 0.4rem;
+}
+
+.hadith-item {
+  border-right: 3px solid rgba(56, 189, 248, 0.6);
+  padding: 0.3rem 0.6rem;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 8px;
+}
+
+.hadith-meta {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.tooltip {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  background: #082f49;
+  color: #e0f2fe;
+  border: 1px solid #0ea5e9;
+  border-radius: 8px;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.85rem;
+  max-width: 220px;
+}
+
+.tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
