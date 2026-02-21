@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>همراه قرآن</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lateef:wght@400;700&family=Vazirmatn:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-glow"></div>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>همراه قرآن</h1>
+          <p>تلاوت آیات به همراه ترجمه فولادوند و احادیث مرتبط</p>
+        </div>
+        <div class="font-controls">
+          <label>
+            فونت قرآن
+            <select id="quranFontSelect">
+              <option value="Amiri">Amiri</option>
+              <option value="Lateef">Lateef</option>
+              <option value="Vazirmatn">Vazirmatn</option>
+            </select>
+          </label>
+          <label>
+            فونت ترجمه
+            <select id="translationFontSelect">
+              <option value="Vazirmatn">Vazirmatn</option>
+              <option value="Amiri">Amiri</option>
+              <option value="Lateef">Lateef</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <section class="controls">
+        <label for="surahSelect">انتخاب سوره</label>
+        <select id="surahSelect"></select>
+      </section>
+
+      <section id="status" class="status">در حال بارگذاری سوره‌ها...</section>
+      <section id="ayahContainer" class="ayah-container"></section>
+    </main>
+
+    <div id="tooltip" class="tooltip" role="tooltip"></div>
+
+    <template id="ayahTemplate">
+      <article class="ayah-card">
+        <div class="ayah-number"></div>
+        <p class="ayah-arabic"></p>
+        <p class="ayah-translation"></p>
+        <section class="hadith-block">
+          <h3>احادیث مرتبط</h3>
+          <div class="hadith-scroll"></div>
+        </section>
+      </article>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
